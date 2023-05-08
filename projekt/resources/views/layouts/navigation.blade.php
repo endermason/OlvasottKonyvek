@@ -13,20 +13,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
                 @auth
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Könyvek</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('reads') }}">Könyvek</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Vélemények</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Böngészés</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-responsive-nav-link :href="route('logout')"
-                                                   onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                                Kilépés
-                            </x-responsive-nav-link>
-                        </form>
-                        </a>
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">Kilépés</a>
+                        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                     </li>
                 @else
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('login') }}">Belépés</a></li>

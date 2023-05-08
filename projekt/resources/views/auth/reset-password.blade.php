@@ -1,11 +1,9 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <x-slot name="header">
+        <h1>Állíts be új jelszót!</h1>
+    </x-slot>
 
+    <x-auth-card>
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
@@ -39,9 +37,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-button>
+                <button class="btn btn-primary">
                     {{ __('Reset Password') }}
-                </x-button>
+                </button>
             </div>
         </form>
     </x-auth-card>

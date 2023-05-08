@@ -1,11 +1,9 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <x-slot name="header">
+        <h1>Lépj be!</h1>
+    </x-slot>
 
+    <x-auth-card>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -17,9 +15,9 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="username" :value="__('Username')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-input id="username" class="block mt-1 w-full" name="username" :value="old('username')" required autofocus />
             </div>
 
             <!-- Password -->
@@ -47,9 +45,9 @@
                     </a>
                 @endif
 
-                <x-button class="ml-3">
+                <button class="btn btn-primary">
                     {{ __('Log in') }}
-                </x-button>
+                </button>
             </div>
         </form>
     </x-auth-card>

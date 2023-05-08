@@ -1,11 +1,9 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <x-slot name="header">
+        <h1>Regisztálj!</h1>
+    </x-slot>
 
+    <x-auth-card>
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
@@ -57,9 +55,9 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <button class="btn btn-primary">
                     {{ __('Register') }}
-                </x-button>
+                </button>
             </div>
         </form>
     </x-auth-card>
