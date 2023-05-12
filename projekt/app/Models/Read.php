@@ -10,7 +10,6 @@ class Read extends Model
 {
     use HasFactory;
 
-
     /**
      * Get the associated user.
      */
@@ -35,4 +34,5 @@ class Read extends Model
     protected $casts = [
         'when' => 'date',
     ];
+
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 class WelcomeController extends Controller
 {
+
     public function __invoke()
     {
         if (auth()->user()) {
@@ -12,4 +13,5 @@ class WelcomeController extends Controller
             return view('welcome');
         }
     }
+
 }

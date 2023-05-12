@@ -5,6 +5,10 @@
 
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
+        <div class="pb-4">
+            <a href="/book/create">Új könyv hozzáadása</a>
+        </div>
+
         <ul>
             @forelse($reads as $read)
                 <li>{{ $read->book->author->name }}: {{ $read->book->title }} ({{ $read->book->year }})<br>Elolvasva: {{ date('Y. d. m.', strtotime($read->when)) }}</li>
