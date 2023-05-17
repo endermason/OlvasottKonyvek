@@ -138,4 +138,63 @@ class ReadsController extends Controller
         return response("");//->header('HX-Redirect', route('reads'));
     }
 
+    /**
+     * Egy új olvasási bejegyzés mentése.
+     */
+    public function store()
+    {
+        $user = User::findOrFail(Auth::id());
+        $errors = [];
+
+        //Time
+        if (request()->input('time') == "") {
+            array_push($errors, "Nem adtál meg olvasási dátumot!");
+        } else {
+            $timeV = request()->input('time');
+        }
+
+        //Book
+        $book = Book::findOrFail(request()->input('book_id'));
+
+        if (count($errors) > 0) {
+            return view("book.create", [
+                "time" => request()->input('time'),
+                "book" => $book,
+                "errors" => $errors]);
+        }
+
+        $reads = new Read();
+        $reads->when = $timeV;
+        $reads->book_id = $book->id;
+
+        $user->reads()->save($reads);
+        return response("");//->header('HX-Redirect', route('reads'));
+    }
+
+    /**
+     * Egy olvasási bejegyzés törlése.
+     */
+    public function delete() {
+        $read = Read::findOrFail(request()->input('read_id'));
+
+        //Ha nem a felhasználó olvasta el, hanem másvalaki
+        if($read->user_id != Auth::id()) {
+            return abort(404);
+        }
+
+        //Más nem olvasta el a könyvet?
+        if (count($read->book->reads) == 1) {
+            //Több könyve van az írónak?
+            if (count($read->book->author->books) == 1) {
+                $read->book->author->delete();
+            }
+
+            $read->book->delete();
+        }
+
+        $read->delete();
+
+        return response("");
+    }
+
 }

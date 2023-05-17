@@ -20,11 +20,11 @@ class Book extends Model
     }
 
     /**
-     * Get the users who read this book.
+     * Get the read objects for users who read this book.
      */
-    public function readers(): HasMany
+    public function reads(): HasMany
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Read::class);
     }
 
 }

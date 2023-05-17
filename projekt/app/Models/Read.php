@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Read extends Model
 {
@@ -24,6 +25,14 @@ class Read extends Model
     public function book(): BelongsTo
     {
         return $this->belongsTo(Book::class);
+    }
+
+    /**
+     * Get the associated review.
+     */
+    public function review(): HasOne
+    {
+        return $this->hasOne(Review::class);
     }
 
     /**
