@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->string("title")->nullable();
             $table->integer("rating");
-            $table->longText("review");
+            $table->string("review");
             $table->unsignedBigInteger("read_id");
             $table->boolean("public");
             $table->timestamps();

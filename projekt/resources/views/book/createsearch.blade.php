@@ -1,9 +1,12 @@
 @if(count($books)==0)
-    <br>
-    <p>Nincs ilyen című könyv. Hozzá szeretnél adni egy új könyvet? Akkor kattints <b style="cursor: pointer;"
-            hx-post="/book/create-new"
-            hx-target="#main"
-            hx-vals='{"_token": "{{ csrf_token() }}", "title": "{{ $title }}" }'>ide</b>.</p>
+    <tr>
+        <td colspan="4">Nincs ilyen című könyv. Hozzá szeretnél adni egy új könyvet? Akkor kattints <b
+                style="cursor: pointer; padding: 0;"
+                hx-post="/book/create-new"
+                hx-target="#main"
+                hx-vals='{"_token": "{{ csrf_token() }}", "title": "{{ $title }}" }'>ide</b>.
+        </td>
+    </tr>
 @else
     <thead>
     <tr>
@@ -20,11 +23,20 @@
             <td>{{ $book->title }}</td>
             <td>{{ $book->year }}</td>
             <td>
-                <a  style="cursor: pointer;"
-                    hx-post="/book/create-use"
-                    hx-target="#main"
-                    hx-vals='{"_token": "{{ csrf_token() }}", "book_id": "{{ $book->id }}" }' class="btn btn-primary">Kiválasztás</a>
+                <a style="cursor: pointer;"
+                   hx-post="/book/create-use"
+                   hx-target="#main"
+                   hx-vals='{"_token": "{{ csrf_token() }}", "book_id": "{{ $book->id }}" }' class="btn btn-primary">Kiválasztás</a>
             </td>
         </tr>
     @endforeach
+
+    <tr>
+        <td colspan="4">Hozzá szeretnél adni egy új könyvet? Akkor kattints <b
+                style="cursor: pointer;"
+                hx-post="/book/create-new"
+                hx-target="#main"
+                hx-vals='{"_token": "{{ csrf_token() }}", "title": "{{ $title }}" }'>ide</b>.
+        </td>
+    </tr>
 @endif

@@ -41,7 +41,7 @@ class ReadsController extends Controller
     {
         $title = trim(request()->input('title'));
         if ($title != "") {
-            $books = Book::query()->where('title', 'LIKE', "%" . $title . "%")->get();
+            $books = Book::query()->where('title', 'LIKE', "%" . strtolower($title) . "%")->get();
         } else {
             $books = [];
         }
@@ -77,32 +77,32 @@ class ReadsController extends Controller
 
         //Author
         if (request()->input('author') == "") {
-            array_push($errors, "Nem adtál meg szerzőt!");
+            $errors[] = "Nem adtál meg szerzőt!";
         } else {
             $authorV = request()->input('author');
         }
 
         //Title
         if (request()->input('title') == "") {
-            array_push($errors, "Nem adtál meg címet!");
+            $errors[] = "Nem adtál meg címet!";
         } else {
             $titleV = request()->input('title');
         }
 
         //Year
         if (request()->input('year') == "") {
-            array_push($errors, "Nem adtál meg kiadási évet!");
+            $errors[] = "Nem adtál meg kiadási évet!";
         } else if (!is_numeric(request()->input('year'))) {
-            array_push($errors, "Nem számot adtál meg kiadási évként!");
+            $errors[] = "Nem számot adtál meg kiadási évként!";
         } else if (request()->input('year') < 1000 || request()->input('year') > date('Y')) {
-            array_push($errors, "Nem megfelelő a kiadási év!");
+            $errors[] = "Nem megfelelő a kiadási év!";
         } else {
             $yearV = request()->input('year');
         }
 
         //Time
         if (request()->input('time') == "") {
-            array_push($errors, "Nem adtál meg olvasási dátumot!");
+            $errors[] = "Nem adtál meg olvasási dátumot!";
         } else {
             $timeV = request()->input('time');
         }
@@ -135,7 +135,7 @@ class ReadsController extends Controller
         $reads->book_id = $book->id;
 
         $user->reads()->save($reads);
-        return response("");//->header('HX-Redirect', route('reads'));
+        return response("")->header('HX-Redirect', route('reads'));
     }
 
     /**
@@ -148,7 +148,7 @@ class ReadsController extends Controller
 
         //Time
         if (request()->input('time') == "") {
-            array_push($errors, "Nem adtál meg olvasási dátumot!");
+            $errors[] = "Nem adtál meg olvasási dátumot!";
         } else {
             $timeV = request()->input('time');
         }
@@ -168,7 +168,7 @@ class ReadsController extends Controller
         $reads->book_id = $book->id;
 
         $user->reads()->save($reads);
-        return response("");//->header('HX-Redirect', route('reads'));
+        return response("")->header('HX-Redirect', route('reads'));
     }
 
     /**
@@ -192,6 +192,7 @@ class ReadsController extends Controller
             $read->book->delete();
         }
 
+        $read->review->delete();
         $read->delete();
 
         return response("");

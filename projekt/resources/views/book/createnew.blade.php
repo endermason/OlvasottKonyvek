@@ -10,29 +10,26 @@
     @csrf
 
     <div>
-        <x-label for="author" :value="__('Író')" />
-
-        <x-input id="author" class="block mt-1 w-full" name="author" :value="old('author') ?? $author ?? ''" required />
+        <x-label for="author" :value="__('Író')"/>
+        <x-input id="author" class="block mt-1 w-full" name="author" :value="$author ?? ''" required/>
     </div>
 
 
     <div>
-        <x-label for="title" :value="__('Cím')" />
-
-        <x-input id="title" class="block mt-1 w-full" name="title" :value="old('title') ?? $title ?? ''" required />
+        <x-label for="title" :value="__('Cím')"/>
+        <x-input id="title" class="block mt-1 w-full" name="title" :value="$title ?? ''" required/>
     </div>
 
     <div>
-        <x-label for="year" :value="__('Kiadás éve')" />
-
-        <x-input id="year" class="block mt-1 w-full" name="year" :value="old('year') ?? $year ?? ''" required />
+        <x-label for="year" :value="__('Kiadás éve')"/>
+        <x-input id="year" class="block mt-1 w-full" name="year" :value="$year ?? ''" required/>
     </div>
 
     <div>
-        <x-label for="time" :value="__('Elolvasás dátuma')" />
-
-        <x-input id="time" class="block mt-1 w-full" type="date" name="time" :value="old('time') ?? $time ?? date('Y-m-d')" required />
+        <x-label for="time" :value="__('Elolvasás dátuma')"/>
+        <x-input id="time" class="block mt-1 w-full" type="date" name="time" :value="$time ?? date('Y-m-d')" required/>
     </div>
 
     <input class="btn btn-primary" type="submit" value="Mentés">
+
 </form>
