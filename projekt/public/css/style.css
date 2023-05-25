@@ -116,3 +116,21 @@ input:checked + .slider:before {
     margin-left: 2px;
     cursor: pointer;
 }
+
+
+.review-card {
+    border: 2px solid blue;
+    border-radius: 15px;
+}
+
+.searchbar {
+    width: 50%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-default {
+    cursor: default;
+}

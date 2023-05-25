@@ -41,7 +41,7 @@ class ReadsController extends Controller
     {
         $title = trim(request()->input('title'));
         if ($title != "") {
-            $books = Book::query()->where('title', 'LIKE', "%" . strtolower($title) . "%")->get();
+            $books = Book::query()->where('title', 'LIKE', "%" . mb_strtolower($title) . "%")->get();
         } else {
             $books = [];
         }

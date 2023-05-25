@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrowsingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReadsController;
@@ -32,6 +33,8 @@ Route::post('/book2', [ReadsController::class, 'store']);
 Route::get('/review/create/{id}', [ReviewController::class, 'createReview']);
 Route::get('/review/{id}', [ReviewController::class, 'editReview']);
 
+Route::get('/browsing', [BrowsingController::class, 'index'])->name('browsing');
+
 //HTMX views
 Route::post('/book/search', [ReadsController::class, 'createSearch']);
 Route::post('/book/create-new', [ReadsController::class, 'createNew']);
@@ -40,5 +43,6 @@ Route::delete('/book/delete', [ReadsController::class, 'delete']);
 Route::post('/review', [ReviewController::class, 'store']);
 Route::post('/review/edit', [ReviewController::class, 'edit']);
 Route::delete('/review/delete', [ReviewController::class, 'delete']);
+Route::get('/browsing/load/{page}', [BrowsingController::class, 'load'])->name('browsing.load');
 
 require __DIR__.'/auth.php';

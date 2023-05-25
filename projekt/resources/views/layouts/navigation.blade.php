@@ -18,7 +18,7 @@
                         <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('reads') }}">Könyvek</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Vélemények</a>
+                        <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('browsing') }}">Vélemények</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('logout') }}"

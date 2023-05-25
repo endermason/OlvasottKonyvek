@@ -47,7 +47,7 @@
                     </p>
                 </li>
             @empty
->                <p>Még nem adtál hozzá egy elolvasott könyvet sem.</p>
+                <p>Még nem adtál hozzá egy elolvasott könyvet sem.</p>
             @endforelse
         </ul>
     </div>
