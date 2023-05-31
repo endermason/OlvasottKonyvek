@@ -11,6 +11,8 @@
                     <i>Értékelés:</i> @for($i = 0; $i < $review->rating; $i++) <label class="star">★</label> @endfor
                     <br>
                     <i>Értékelő:</i> {{ $review->read->user->username }}
+                    <br>
+                    <i>Dátum:</i> {{ $review->review_date }}
                 </div>
                 <div class="card-body">
                     <span class="add-read-more show-less-content">{{ $review->review }}</span>
