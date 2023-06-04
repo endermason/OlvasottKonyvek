@@ -1,13 +1,5 @@
 <x-app-layout>
 
-    <x-slot name="t">
-        Hi!
-    </x-slot>
-
-    <x-slot name="bg">
-        url('/assets/img/hom-bg.jpg')
-    </x-slot>
-
     <!-- Header -->
     <x-slot name="header">
         <h2>Vélemények</h2>

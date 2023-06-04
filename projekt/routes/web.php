@@ -23,6 +23,7 @@ Route::get('/', WelcomeController::class);
 
 Route::get('/dashboard', DashboardController::class)->name('dashboard');
 Route::get('/contact', ContactController::class)->name('contact');
+Route::post('/contact-send', [ContactController::class, 'send'])->name('contact-send');
 
 Route::get('/read-books', [ReadsController::class, 'index'])->name('reads');
 
