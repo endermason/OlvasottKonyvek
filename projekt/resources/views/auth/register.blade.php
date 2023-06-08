@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-slot name="header">
-        <h1>Regisztálj!</h1>
+        <h1>Regisztrálj!</h1>
     </x-slot>
 
     <x-auth-card>

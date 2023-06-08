@@ -10,7 +10,7 @@ class BrowsingController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);;
     }
 
     public function index()
@@ -54,7 +54,7 @@ class BrowsingController extends Controller
                     $query->orderBy('reviews.created_at', 'desc');
                 }
             })
-            ->get(['reviews.title as review_title', 'reviews.created_at as review_date', '*']);
+            ->get(['reviews.title as review_title', 'reviews.created_at as review_date', 'reviews.id as review_id', '*']);
         $size = ceil($reviews->count() / 2);
 
         //Lekérdezés eredményének átadása a sessionbe.
@@ -74,6 +74,19 @@ class BrowsingController extends Controller
         $reviews = request()->session()->get('reviews')->skip(($page - 1) * 2)->take(2);
 
         return view('browsing.load', ['reviews' => $reviews, 'size' => $size, 'page' => $page]);
+    }
+
+    public function delete()
+    {
+        if (auth()->user()->admin == 1) {
+            echo request()->input('review_id');
+            $review = Review::findOrFail(request()->input('review_id'));
+
+            $review->delete();
+            return response("")->header('HX-Redirect', route('browsing'));
+        }
+
+        abort(403);
     }
 
 }
