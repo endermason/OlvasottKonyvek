@@ -4,7 +4,10 @@
     <x-slot name="header">
         <h2>Vélemények</h2>
     </x-slot>
-
+    <!-- Background image -->
+    <x-slot name="bg">
+        url('assets/img/review.jpg')
+    </x-slot>
     <!-- Main Content -->
     <div class="py-12">
         <div class="p-6 row">

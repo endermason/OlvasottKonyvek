@@ -4,9 +4,13 @@
     <x-slot name="header">
         <h2>Olvasott könyvek</h2>
     </x-slot>
-
+    <!-- Background image -->
+    <x-slot name="bg">
+        url('assets/img/read.jpg')
+    </x-slot>
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
+
         <!-- Új könyv -->
         <div class="pb-4">
             <a href="/book/create" class="btn btn-primary" style="text-decoration: none;">Új könyv hozzáadása</a>

@@ -5,6 +5,11 @@
         <h2>Kapcsolat</h2>
     </x-slot>
 
+    <!-- Background image -->
+    <x-slot name="bg">
+        url('assets/img/contact.jpg')
+    </x-slot>
+
     <!-- Main Content -->
     <div class="py-12">
         <div class="p-6">
@@ -39,7 +44,9 @@
                     <div class="mb-3">
                         <textarea class="form-control" id="message" name="message" placeholder="Üzenet" required>{{old('message')}}</textarea>
                     </div>
-                    <input type="submit" class="btn btn-primary" value="Küldés">
+                    <div style="margin: auto; width: 50%; text-align: center;" class="mb-3">
+                        <input type="submit" class="btn btn-primary" value="Küldés">
+                    </div>
                 </form>
             @endif
         </div>
