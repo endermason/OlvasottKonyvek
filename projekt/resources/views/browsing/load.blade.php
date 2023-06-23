@@ -1,5 +1,5 @@
 <div id="results">
-    @foreach($reviews as $review)
+    @forelse($reviews as $review)
         <div class="card review-card mb-2">
             <div class="card-body">
                 <div class="card-title justify-content-between mb-2 d-flex">
@@ -16,13 +16,13 @@
                         <i>Dátum:</i> {{ $review->review_date }}
                     </div>
                     @if(Auth::user()->admin)
-                    <div class="ml-auto">
-                        <button class="btn btn-danger"
-                                hx-delete="/browsing/delete"
-                                hx-confirm="Biztosan törölni szeretnéd ezt a véleményt?"
-                                hx-vals='{ "_token": "{{ csrf_token() }}", "review_id": "{{ $review->review_id }}" }'>Törlés
-                        </button>
-                    </div>
+                        <div class="ml-auto">
+                            <button class="btn btn-danger"
+                                    hx-delete="/browsing/delete"
+                                    hx-confirm="Biztosan törölni szeretnéd ezt a véleményt?"
+                                    hx-vals='{ "_token": "{{ csrf_token() }}", "review_id": "{{ $review->review_id }}" }'>Törlés
+                            </button>
+                        </div>
                     @endif
                 </div>
                 <div class="card-body">
@@ -30,8 +30,13 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @empty
+        <div>
+            <p class="center">Nincs találat.</p>
+        </div>
+    @endforelse
 </div>
+
 <nav>
     <ul class="pagination justify-content-center">
         <!-- Első oldal, ha nem ott áll, egyébként disabled -->

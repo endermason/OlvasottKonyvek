@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-        <title>@isset($t){{ $t }}@else KönyvMoly @endisset</title>
+        <!-- Title -->
+        <title>@isset($t){{ $t }} @else KönyvMoly @endisset</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -28,6 +28,7 @@
         <!-- CSS -->
         <link href="/css/style.css" rel="stylesheet"/>
 
+        <!-- Favicon -->
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
     </head>
 
@@ -35,7 +36,7 @@
         @include('layouts.navigation')
 
         <!-- Page Header-->
-        <header class="masthead" style="background-image: @isset($bg) {{ $bg }} @else url('/assets/img/home-bg.jpg') @endisset">
+        <header class="masthead" style="background-image: @isset($bg) {{ $bg }} @else url('/assets/img/home.jpg') @endisset">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -77,7 +78,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core theme JS-->
+        <script src="/js/jquery.min.js"></script>
         <script src="/js/scripts.js"></script>
+
     </body>
 
 </html>

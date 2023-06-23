@@ -1,37 +1,42 @@
-<x-guest-layout>
-    <x-slot name="header">
-        <h1>Igazold az e-mail címed!</h1>
+<x-app-layout>
+
+    <x-slot name="t">
+        E-mail cím megerősítése
     </x-slot>
 
-    <x-auth-card>
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+    <x-slot name="header">
+        <h2>Igazold az e-mail címed!</h2>
+    </x-slot>
+
+    <div class="mb-3">
+        <div class="mb-4">
+            Kérjük, ellenőrizd az e-mail fiókodat, és kattints a megerősítő linkre.<br />
+            Ha nem kaptad meg az e-mailt, kattints az alábbi gombra a link újraküldéséhez.
         </div>
 
         @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+            <div class="mb-4">
+                <b>Az e-mailt elküldtük!</b>
             </div>
         @endif
 
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
+        <div class="mt-4">
+            <form class="center-form" method="POST" action="{{ route('verification.send') }}">
                 @csrf
 
-                <div>
-                    <button class="btn btn-primary">
-                        {{ __('Resend Verification Email') }}
-                    </button>
+                <div class="mb-3">
+                    <button class="btn btn-primary">Megerősítő link újraküldése</button>
                 </div>
             </form>
 
-            <form method="POST" action="{{ route('logout') }}">
+            <form class="center-form" method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
-                </button>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Kijelentkezés</button>
+                </div>
             </form>
         </div>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+
+</x-app-layout>

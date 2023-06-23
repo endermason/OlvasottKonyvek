@@ -1,34 +1,40 @@
-<x-guest-layout>
-    <x-slot name="header">
-        <h1>Elfelejtetted a jelszavad?</h1>
+<x-app-layout>
+
+    <x-slot name="t">
+        Elfelejtett jelszó
     </x-slot>
 
-    <x-auth-card>
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <x-slot name="header">
+        <h2>Elfelejtetted a jelszavad?</h2>
+    </x-slot>
+
+    <div class="mb-3">
+        <div class="mb-4">
+            Elfelejtetted a jelszavad? Semmi gond.<br />
+            Csak add meg az e-mail címedet, és küldünk egy linket, amivel új jelszót állíthatsz be.
         </div>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+        @if(session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
             </div>
+        @else
+            <x-validation-errors :errors="$errors" />
 
-            <div class="flex items-center justify-end mt-4">
-                <button class="btn btn-primary">
-                    {{ __('Email Password Reset Link') }}
-                </button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+            <form class="center-form" method="POST" action="{{ route('password.email') }}">
+                @csrf
+
+                <div class="block mb-3">
+                    <x-input id="email" name="email" type="email" :value="old('email')"  placeholder="E-mail cím" required autofocus />
+                </div>
+
+                <div style="text-align: center;" class="mb-3">
+                    <button class="btn btn-primary">
+                        Küldés
+                    </button>
+                </div>
+            </form>
+        @endif
+    </div>
+
+</x-app-layout>

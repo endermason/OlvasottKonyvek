@@ -192,7 +192,9 @@ class ReadsController extends Controller
             $read->book->delete();
         }
 
-        $read->review->delete();
+        if ($read->review != null) {
+            $read->review->delete();
+        }
         $read->delete();
 
         return response("");

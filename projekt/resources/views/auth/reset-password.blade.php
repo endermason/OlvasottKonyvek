@@ -1,46 +1,39 @@
-<x-guest-layout>
-    <x-slot name="header">
-        <h1>Állíts be új jelszót!</h1>
+<x-app-layout>
+
+    <x-slot name="t">
+        Új jelszó beállítása
     </x-slot>
 
-    <x-auth-card>
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <x-slot name="header">
+        <h2>Állíts be új jelszót!</h2>
+    </x-slot>
 
-        <form method="POST" action="{{ route('password.update') }}">
+    <div class="mb-3">
+        <x-validation-errors :errors="$errors" />
+
+        <form class="center-form" method="POST" action="{{ route('password.update') }}">
             @csrf
 
-            <!-- Password Reset Token -->
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+            <div class="mb-3">
+                <x-input id="email" name="email" type="email" :value="old('email', $request->email)" placeholder="E-mail cím" required />
             </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+            <div class="mb-3">
+                <x-input id="password" name="password" type="password" placeholder="Új jelszó" required autofocus />
             </div>
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
+            <div class="mb-3">
+                <x-input id="password_confirmation" name="password_confirmation" type="password" placeholder="Új jelszó megerősítése" required />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div style="text-align: center;" class="mb-3">
                 <button class="btn btn-primary">
-                    {{ __('Reset Password') }}
+                    Mentés
                 </button>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+
+</x-app-layout>

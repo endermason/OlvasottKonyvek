@@ -1,21 +1,15 @@
-<form hx-post="/book2">
-    @if(count($errors) > 0)
-        <div class="alert alert-danger" role="alert">
-            @foreach($errors as $error)
-                {{ $error }}<br>
-            @endforeach
-        </div>
-    @endif
+<form class="center-form" hx-post="/book2" hx-target="#main">
+    <x-validation-errors :errors="$errors" />
 
     @csrf
 
-    <div>
+    <div class="mb-3">
         Kiválasztott könyv: {{ $book->author->name }}: {{ $book->title }} ({{ $book->year }})
     </div>
 
-    <div>
-        <x-label for="time" :value="__('Elolvasás dátuma')"/>
-        <x-input id="time" class="block mt-1 w-full" type="date" name="time" :value="$time ?? date('Y-m-d')" required/>
+    <div class="mb-3">
+        <x-label for="time" value="Elolvasás dátuma"/>
+        <x-input id="time" type="date" name="time" :value="$time ?? date('Y-m-d')" required/>
     </div>
 
     <input type="hidden" name="book_id" value="{{ $book->id }}">

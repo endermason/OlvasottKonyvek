@@ -141,3 +141,16 @@ input:checked + .slider:before {
 .cursor-default {
     cursor: default;
 }
+
+.center-form {
+    margin: auto;
+    width: 50%;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.center {
+    text-align: center;
+}

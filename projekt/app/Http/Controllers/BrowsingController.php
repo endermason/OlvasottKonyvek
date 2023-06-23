@@ -15,7 +15,13 @@ class BrowsingController extends Controller
 
     public function index()
     {
-        $authors = Author::all();
+        $authors = Author::query()->join('books', 'authors.id', '=', 'books.author_id')
+            ->join('reads', 'books.id', '=', 'reads.book_id')
+            ->join('reviews', 'reads.id', '=', 'reviews.read_id')
+            ->where('reviews.public', '=', 1)
+            ->groupBy('authors.name')
+            ->havingRaw('COUNT(authors.name)>0')
+            ->get(['authors.name']);
         $selected_authors = array();
         for ($i = 0; $i < count($authors); $i++) {
             if (request()->input($i, "0") != "0") {
@@ -79,7 +85,6 @@ class BrowsingController extends Controller
     public function delete()
     {
         if (auth()->user()->admin == 1) {
-            echo request()->input('review_id');
             $review = Review::findOrFail(request()->input('review_id'));
 
             $review->delete();

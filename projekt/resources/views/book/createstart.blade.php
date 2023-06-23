@@ -1,13 +1,13 @@
 <x-app-layout>
 
-    <!-- Header -->
     <x-slot name="header">
         <h2>Olvasott könyvek</h2>
     </x-slot>
 
     <!-- Main Content-->
-    <div class="container px-4 px-lg-5" id="main">
-        <h5 class="modal-title">Keress könyvet cím alapján</h5>
+    <div class="mb-3" id="main">
+        <h5>Keress könyvet cím alapján</h5>
+
         <div>
             <input class="form-control" type="search"
                    name="title" placeholder="Kezd gépelni..."
@@ -20,7 +20,6 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="/js/htmx.min.js"></script>
 
 </x-app-layout>

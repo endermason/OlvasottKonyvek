@@ -1,19 +1,18 @@
 <x-app-layout>
 
-    <!-- Header -->
     <x-slot name="header">
         <h2>Vélemények</h2>
     </x-slot>
-    <!-- Background image -->
+
     <x-slot name="bg">
         url('assets/img/review.jpg')
     </x-slot>
+
     <!-- Main Content -->
-    <div class="py-12">
+    <div class="md-3">
         <div class="p-6 row">
             <form class="searchform d-flex justify-content-center mb-4" method="get">
-                <input class="searchbar" type="text" value="{{ $search ?? '' }}" name="search"
-                       placeholder="Keress a könyvek címében...">
+                <input class="searchbar" type="text" value="{{ $search ?? '' }}" name="search" placeholder="Keress a könyvek címében...">
                 <button class="btn btn-primary" type="submit">Keresés</button>
             </form>
 
@@ -54,7 +53,7 @@
             @endphp
 
             <div class="col col-sm-2">
-                <div class="dropdown">
+                <div class="dropdown center">
                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ $order_text }}
                     </button>
@@ -69,8 +68,10 @@
                 </div>
 
                 <hr>
+                <div class="center"><b><i>Szűrés</i></b></div>
+                <hr>
 
-                <div style="text-align: center"><i>Írók</i></div>
+                <div class="center"><i>Írók</i></div>
                     @foreach($authors as $author)
                         <div>
                             @if(in_array($author->name, $selected_authors))
@@ -80,10 +81,10 @@
                             @endif
                         </div>
                     @endforeach
-
                 <hr>
 
-                <div style="text-align: center"><i>Értékelés</i></div>
+                <div class="center"><i>Értékelés</i></div>
+
                 <div class="rating">
                     @for($i = 0; $i < 5; $i++)
                         @if((5-$i) == request()->get('stars', 0))
@@ -94,10 +95,11 @@
                         @endif
                     @endfor
                 </div>
-
                 <hr>
 
-                <div><a class="btn btn-primary" href="{{ url()->current() . '?' . http_build_query(array_diff($selected_authors, $selected_authors)) . $search_query }}">Összes törlése</a></div>
+                <div class="center">
+                    <a class="btn btn-primary" href="{{ url()->current() . '?' . http_build_query(array_diff($selected_authors, $selected_authors)) . $search_query }}">Összes törlése</a>
+                </div>
             </div>
 
             <div class="col col-sm-10" id="content" hx-target="this">
@@ -108,7 +110,6 @@
 
     <!-- Scripts -->
     <script src="/js/htmx.min.js"></script>
-    <script src="/js/jquery.min.js"></script>
     <script>
         //Read more beállítása lapozás után
         document.body.addEventListener('htmx:afterSwap', function (_) {
