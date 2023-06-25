@@ -1,4 +1,3 @@
-## Controllerek
 
 ![Logo](https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg)
 
@@ -62,10 +61,10 @@ Itt egy rövid leírás található az oldalról.
 Az weboldal használatához a felhasználónak regisztrálnia kell a `Regisztráció` aloldalon.
 
 A regisztráció a felhasználó által megadott email címre küldött `megerősítő linkre`
-való kattintás után valid. Amennyiben nem érkezett meg a megerősítő link,
+való kattintás után lesz teljes. Amennyiben nem érkezett meg a megerősítő link,
 a felhasználónak lehetősége van új megerősítő linket kérni.
 
-A felhasználó a `Belépés` aloldalon tud bejelentkezni a regisztrált email címével és jelszavával.
+A felhasználó a `Belépés` aloldalon tud bejelentkezni a felhasználónevével és jelszavával.
 Amennyiben elfelejtette a jelszavát, lehetősége van jelszó-helyreállítást kérni,
 amit a felhasználó által megadott email címre küldött linkre kattintva tud megtenni.
 
@@ -88,16 +87,16 @@ ahol a hozzáadott könyv megjelenik a listában.
 
 Ezután a `Vélemény írása` gombra kattintva tud véleményt írni a könyvről.
 A vélemény írása után a felhasználó visszakerül a `Könyvek` oldalra,
-ahol a listában látszódik, hogy arról a könyvrőlvan már véleménye.
+ahol a listában látszódik, hogy arról a könyvről van már véleménye.
 Egy könyvet többször is el lehet olvasni, és minden elolvasáshoz lehet véleményt írni.
 A vélemény írásánál a ***könyv címét*** és az ***elolvasás idejét*** 
 automatikusan kitölti a rendszer, a felhasználónak csak az ***értékelést***,
 a ***véleményt***, valamint azt, hogy a véleménye ***publikus***-e, vagy sem, kell megadnia.
-A véleménynyek ***cím***et adni nem kötelező.
+A véleménynek ***cím***et adni nem kötelező.
 
 A `Vélemények` aloldalon a felhasználók ***publikus véleményei*** jelennek meg.
 A véleményekre a ***könyv címe*** alapján keresni, a ***kövyv írója*** és a róla írt
-***értékelés*** alapján szűrni lehet. Ezen felül a véleényeket lehetőség van sorba rendeznia 
+***értékelés*** alapján szűrni lehet. Ezen felül a véleményeket lehetőség van sorba rendezni a 
 ***könyv címe***, ***értékelés***, ***vélemény készítésének ideje*** szerint is. 
 
 A `Kapcsolat` aloldalon a felhasználók üzenetet küldhetnek az oldal üzemeltetőjének.

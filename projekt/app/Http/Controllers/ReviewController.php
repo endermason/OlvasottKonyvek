@@ -23,7 +23,7 @@ class ReviewController extends Controller
             abort(403);
         }
 
-        return view("review.create", ["read" => $read, "edit" => false]);
+        return view("review", ["read" => $read, "edit" => false]);
     }
 
     public function store()
@@ -68,7 +68,8 @@ class ReviewController extends Controller
                 "rating" => request()->input('rating'),
                 "review" => request()->input('review'),
                 "public" => request()->input('public', "off") == "on",
-                "errors" => $errors]);
+                "errors" => $errors,
+                "edit" => false]);
         }
 
         $review = new Review();
@@ -144,13 +145,14 @@ class ReviewController extends Controller
         }
 
         if (count($errors) > 0) {
-            return view("review.edit", [
+            return view("review", [
                 "read" => $read,
                 "title" => request()->input('title'),
                 "rating" => request()->input('rating'),
                 "review" => request()->input('review'),
                 "public" => request()->input('public', "off") == "on",
-                "errors" => $errors]);
+                "errors" => $errors,
+                "edit" => true]);
         }
 
         $review = Review::findOrFail($read->review->id);

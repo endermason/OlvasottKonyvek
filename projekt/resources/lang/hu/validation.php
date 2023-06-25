@@ -1,5 +1,5 @@
 <?php
-
+App::setLocale('hu');
 return [
 
     /*
