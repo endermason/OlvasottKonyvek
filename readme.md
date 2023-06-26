@@ -10,13 +10,13 @@ Egy olyan oldal, ahol a felhasználók rendszerezhetik az elolvasott könyveiket
 ---
 ## Telepítés
 
-Klónozza a projektet
+Klónozza a projektet:
 
 ```
 git clone https://github.com/endermason/OlvasottKonyvek.git
 ```
 
-Menjen a projekt mappájába
+Menjen a projekt mappájába:
 
 ```
 cd projekt
