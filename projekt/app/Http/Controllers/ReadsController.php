@@ -103,6 +103,8 @@ class ReadsController extends Controller
         //Time
         if (request()->input('time') == "") {
             $errors[] = "Nem adtál meg olvasási dátumot!";
+        } else if (strtotime(request()->input('time')) > time()) {
+            $errors[] = "Nem adhatsz meg jövőbeli olvasási dátumot!";
         } else {
             $timeV = request()->input('time');
         }
@@ -149,6 +151,8 @@ class ReadsController extends Controller
         //Time
         if (request()->input('time') == "") {
             $errors[] = "Nem adtál meg olvasási dátumot!";
+        } else if (strtotime(request()->input('time')) > time()) {
+            $errors[] = "Nem adhatsz meg jövőbeli olvasási dátumot!";
         } else {
             $timeV = request()->input('time');
         }

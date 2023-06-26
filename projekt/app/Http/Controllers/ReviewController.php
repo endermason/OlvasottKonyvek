@@ -23,7 +23,7 @@ class ReviewController extends Controller
             abort(403);
         }
 
-        return view("review", ["read" => $read, "edit" => false]);
+        return view("review.index", ["read" => $read, "edit" => false]);
     }
 
     public function store()
@@ -62,7 +62,7 @@ class ReviewController extends Controller
         }
 
         if (count($errors) > 0) {
-            return view("review", [
+            return view("review.form", [
                 "read" => $read,
                 "title" => request()->input('title'),
                 "rating" => request()->input('rating'),
@@ -93,7 +93,7 @@ class ReviewController extends Controller
             abort(403);
         }
 
-        return view("review", [
+        return view("review.index", [
             "read" => $review->read,
             "id" => $review->id,
             "title" => $review->title,
@@ -145,8 +145,9 @@ class ReviewController extends Controller
         }
 
         if (count($errors) > 0) {
-            return view("review", [
+            return view("review.form", [
                 "read" => $read,
+                "id" => $read->review->id,
                 "title" => request()->input('title'),
                 "rating" => request()->input('rating'),
                 "review" => request()->input('review'),

@@ -22,7 +22,7 @@
     <div class="mb-3">
         <p class="center">
             {{ $read->book->author->name }}: {{ $read->book->title }} ({{ $read->book->year }})<br>
-            Elolvasva: {{ date('Y. d. m.', strtotime($read->when)) }}
+            Elolvasva: {{ date('Y. m. d.', strtotime($read->when)) }}
         </p>
 
         <form class="center-form" @if($edit)
